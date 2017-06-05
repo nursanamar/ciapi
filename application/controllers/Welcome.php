@@ -39,6 +39,7 @@ class Welcome extends CI_Controller {
 	public function getdata()
 	{
 		$data = $this->data->getall();
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
 	public function searchLike($value,$page)
@@ -46,6 +47,7 @@ class Welcome extends CI_Controller {
 		$to = 5;
 		$from=($page - 1) * $to;
 		$data = $this->data->getLike($value,$from,$to);
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
 	public function getLimit($page)
@@ -53,6 +55,7 @@ class Welcome extends CI_Controller {
 		$to = 5;
 		$from=($page - 1) * $to;
 		$data=$this->data->getLimit($from,$to);
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
 	public function tes()
