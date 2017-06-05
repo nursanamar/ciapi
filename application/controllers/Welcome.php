@@ -27,6 +27,15 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('what');
 	}
+	public function migrate()
+	{
+					$this->load->library('migration');
+
+					if ($this->migration->current() === FALSE)
+					{
+									show_error($this->migration->error_string());
+					}
+	}
 	public function getdata()
 	{
 		$data = $this->data->getall();
