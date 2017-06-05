@@ -59,4 +59,17 @@ class Welcome extends CI_Controller {
 	{
 		echo DOMAIN;
 	}
+	public function seed()
+  {
+    $faker = Faker\Factory::create();
+    for ($i=0; $i < 30 ; $i++) {
+      $nama = $this->mres($faker->name);
+      $adrres= $this->mres($faker->address);
+      $phone=$this->mres($faker->ean8);
+      $data = array('name' => $nama,'addres' => $adrres,'phone' => $phone );
+
+      $this->data->tambah($data);
+    }
+
+  }
 }
