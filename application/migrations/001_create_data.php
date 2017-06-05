@@ -14,7 +14,7 @@ class Migration_Create_data extends CI_Migration {
                         ),
                         'name' => array(
                                 'type' => 'TEXT',
-                                'constraint' => '100',
+                                'null' => TRUE,
                         ),
                         'addres' => array(
                                 'type' => 'TEXT',
