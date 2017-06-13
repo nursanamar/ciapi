@@ -18,12 +18,27 @@ class Data extends CI_Model
   public function tambah($data = array())
   {
     $this->db->insert('datas',$data);
+    return TRUE;
   }
   public function getLimit($from,$to)
   {
     $this->db->select("*")->from('datas');
+    $this->db->order_by('id',"DESC");
     $this->db->limit($to,$from);
     return $this->db->get()->result_array();
+  }
+  public function delete($id)
+  {
+    $this->db->delete('datas',$id);
+
+  }
+
+  public function edit($id,$data)
+  {
+    $this->db->set($data);
+    $this->db->where('id',$id);
+    $this->db->update("datas");
+    
   }
   public function getLike($like,$from,$to)
   {

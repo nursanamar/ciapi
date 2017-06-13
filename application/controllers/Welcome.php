@@ -58,9 +58,48 @@ class Welcome extends CI_Controller {
 		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
-	public function tes()
+	public function addData()
 	{
-		echo DOMAIN;
+		$data = $this->getInput();
+		$this->data->tambah($data);
+		$response = array(
+			"status" => "sukses",
+			"description" => "input data"
+		);
+		$this->output->set_content_type('application/json')->set_output(json_encode($response));
+
+	}
+	public function deleteData()
+	{
+		$data = $this->getInput();
+		$this->data->delete($data);
+		$id = $data['id'];
+		$response = array(
+			"status" => "succes",
+			"Desc" => "Deleted id $id"
+		);
+		$this->output->set_content_type('application/json')->set_output(json_encode($response));
+	}
+	public function editData()
+	{
+		$input = $this->getInput();
+		$id = $input['id'];
+		$data = $input['data'];
+		$this->data->edit($id,$data);
+		$response = array(
+			"status" => "sukses",
+			"description" => "update",
+			"data" => $data
+		);
+		$this->output->set_content_type('application/json')->set_output(json_encode($response));
+	}
+	public function getInput()
+	{
+		$input = $this->input->input_stream();
+		foreach ($input as $key => $value) {
+			$data=json_decode($key,true);
+			return $data;
+		}
 	}
 	public function seed()
   {
@@ -73,6 +112,8 @@ class Welcome extends CI_Controller {
 
       $this->data->tambah($data);
     }
+
+		echo "25 data telah ditambahkan";
 
   }
 	public function mres($value)
