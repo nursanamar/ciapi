@@ -66,6 +66,7 @@ class Welcome extends CI_Controller {
 			"status" => "sukses",
 			"description" => "input data"
 		);
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 
 	}
@@ -78,6 +79,7 @@ class Welcome extends CI_Controller {
 			"status" => "succes",
 			"Desc" => "Deleted id $id"
 		);
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
 	public function editData()
@@ -91,6 +93,7 @@ class Welcome extends CI_Controller {
 			"description" => "update",
 			"data" => $data
 		);
+		$this->output->set_header('Access-Control-Allow-Origin: https://nursanamar.github.io');
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
 	public function getInput()
